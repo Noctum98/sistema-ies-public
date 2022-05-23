@@ -8,7 +8,7 @@ $(document).ready(function () {
         var rutaMaterias = "/selectMateriasCarrera/" + idCarrera;
 
 
-
+        console.log("Estoy con los cargos");
         $.get(rutaMaterias, function (response, state) {
 
 
@@ -17,8 +17,15 @@ $(document).ready(function () {
             else
                 $(".materias").append("<option selected='selected' value=''> - Seleccione la materia - </option>");
 
+            let esDisable;
             for (i = 0; i < response.length; i++) {
-                $(".materias").append("<option value='" + response[i].id + "'> [" + response[i].id + "] " + response[i].nombre + "</option>");
+                if(response[i].cargos.length > 0){
+                    $(".materias").append("<option value='" + response[i].id + "' disabled > [" + response[i].id + "] " + response[i].nombre + "</option>");
+                }else{
+                    $(".materias").append("<option value='" + response[i].id + "'> [" + response[i].id + "] " + response[i].nombre + "</option>");
+                }
+
+
             }
         });
     });
