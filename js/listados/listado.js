@@ -4,6 +4,6 @@ $(document).ready(function () {
         $("#busquedaProfesor").val()
         var url = '/usuarios/listado/profesor/'+ $("#busquedaProfesor").val();
 
-        $(location).prop('href', url)
+        $(location).prop('href', url);
     })
 });
