@@ -27,8 +27,8 @@ if($method == "OPTIONS") {
 |
 */
 
-if (file_exists(__DIR__.'/../sistema-ies/storage/framework/maintenance.php')) {
-    require __DIR__.'/../sistema-ies/storage/framework/maintenance.php';
+if (file_exists(__DIR__.'/../data_iesvu/storage/framework/maintenance.php')) {
+    require __DIR__.'/../data_iesvu/storage/framework/maintenance.php';
 }
 
 /*
@@ -42,7 +42,7 @@ if (file_exists(__DIR__.'/../sistema-ies/storage/framework/maintenance.php')) {
 |
 */
 
-require __DIR__.'/../sistema-ies/vendor/autoload.php';
+require __DIR__.'/../data_iesvu/vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -55,7 +55,7 @@ require __DIR__.'/../sistema-ies/vendor/autoload.php';
 |
 */
 
-$app = require_once __DIR__.'/../sistema-ies/bootstrap/app.php';
+$app = require_once __DIR__.'/../data_iesvu/bootstrap/app.php';
 
 $kernel = $app->make(Kernel::class);
 
