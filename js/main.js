@@ -1,5 +1,3 @@
-// var url = "https://inscripciones.iesvu.edu.ar/";
-var url = "http://inscripciones.devel/";
 window.addEventListener("load", function () {
 
 	urlActual = window.location;
@@ -10,17 +8,19 @@ window.addEventListener("load", function () {
 		let buscador_alumno = document.getElementById('buscador-alumnos');
 		buscador_alumno.addEventListener('submit', function () {
 			let busqueda = document.getElementById('busqueda');
-			buscador_alumno.setAttribute('action', url + 'alumnos/' + busqueda.value);
+			buscador_alumno.setAttribute('action', '/alumnos/' + busqueda.value);
 			this.submit();
 		});
 	}
 
 	// Buscador Preinscripciones
 	if (document.getElementById('buscador')) {
+
 		let buscador = document.getElementById('buscador');
+
 		buscador.addEventListener('submit', function () {
 			let busqueda = document.getElementById('busqueda');
-			buscador.setAttribute('action', url + 'preinscripcion/carreras/' + busqueda.value);
+			buscador.setAttribute('action', '/preinscripcion/carreras/' + busqueda.value);
 			this.submit();
 		});
 	}
