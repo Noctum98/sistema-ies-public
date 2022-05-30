@@ -14,9 +14,6 @@ $(document).ready(function () {
         }else if(theForm.hasClass('form-tradicional_7030'))
         {
             tradicional_7030(theForm);
-        }else if(theForm.hasClass('form-modular'))
-        {
-            modular(theForm);
         }
 
       });
@@ -77,31 +74,7 @@ $(document).ready(function () {
                 }
             }
         });
-      }
 
-      var modular = function(form)
-      {
-        var proceso_id = form.attr("id");
-        var cargo_id = $('input[name=cargo_id]')[0].value;
-        var porcentaje = $('#asis-procentaje-'+proceso_id).val();
-        let url  = "/asistencias/crearAsistenciaModular";
-        let data = {
-            "porcentaje":porcentaje,
-            "proceso_id":proceso_id,
-            'cargo_id':cargo_id
-        }
-        
-        
-        $.ajax({
-            method: "POST",
-            url: url,
-            data: data,
-            //dataType: "dataType",
-            success: function (response) {
-                $(".porcentaje-"+proceso_id).html("<p>% " + porcentaje + "</p>");
-                
-            }
-        });
-        
+
       }
 });
