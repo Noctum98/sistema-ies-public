@@ -2,38 +2,47 @@ $(document).ready(function () {
     console.log('ff')
     $('.select-estado').on('change', function() {
         const campo = $(this);
-        console.log(campo)
         const proceso_id = campo.attr('id');
-        console.log(proceso_id)
-        // var comision_id = $('input[name=comision_id]:checked', "#"+alumno_id).val();
-        // let url = '/comision/alumno/agregar';
-        // let data = {
-        //     "alumno_id":alumno_id,
-        //     "comision_id":comision_id
-        // };
-        console.log($(this).val())
+        const estado_id = campo.val();
+        $('#span-'+proceso_id).removeClass('d-block')
+        $('#span-'+proceso_id).addClass('d-none')
+        $('#spin-'+proceso_id).removeClass('d-none')
+        $('#spin-'+proceso_id).addClass('d-block')
 
-        // $.ajax({
-        //     method: "POST",
-        //     url: url,
-        //     data: data,
-        //     //dataType: "dataType",
-        //     success: function (response) {
-        //         if (response.errors) {
-        //             for (const key in response.errors) {
-        //                 if (Object.hasOwnProperty.call(response.errors, key)) {
-        //                     const element = response.errors[key];
-        //                     $("#alerts").append("<div class='alert alert-danger'>" + element[0] + "</div>");
-        //                 }
-        //             }
-        //         } else {
-        //             $("#alerts").html("");
-        //             console.log(response);
-        //         }
-        //
-        //
-        //     }
-        // });
+        let url = '/proceso/cambia/estado';
+        let data = {
+             "proceso_id":proceso_id,
+             "estado_id":estado_id
+         };
+
+
+        $.ajax({
+            method: "POST",
+            url: url,
+            data: data,
+            //dataType: "dataType",
+            success: function (response) {
+                if (response.errors) {
+                    for (const key in response.errors) {
+                        if (Object.hasOwnProperty.call(response.errors, key)) {
+                            const element = response.errors[key];
+                            $("#alerts").append("<div class='alert alert-danger'>" + element[0] + "</div>");
+                        }
+                    }
+                } else {
+                    $("#alerts").html("");
+
+                    console.log(response);
+                }
+                $('#span-'+proceso_id).removeClass('d-none')
+                $('#span-'+proceso_id).addClass('d-block')
+                $('#spin-'+proceso_id).removeClass('d-block')
+                $('#spin-'+proceso_id).addClass('d-none')
+                console.log($('#span-'+proceso_id))
+
+
+            }
+        });
         
      });
 });
