@@ -241,7 +241,7 @@ window.addEventListener("load", function () {
 					nuevo_estado = 'inactiva';
 					this.value = 'inactiva';
 				}
-				urlpath = url + 'mesas/estado/' + nuevo_estado + '/' + this.id;
+				urlpath = '/mesas/estado/' + nuevo_estado + '/' + this.id;
 				const http = new XMLHttpRequest();
 				http.open("GET", urlpath);
 				http.onreadystatechange = function () {
