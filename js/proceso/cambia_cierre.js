@@ -39,6 +39,13 @@ $(document).ready(function () {
                 $('#span-'+proceso_id).addClass('d-block')
                 $('#spin-'+proceso_id).removeClass('d-block')
                 $('#spin-'+proceso_id).addClass('d-none')
+
+                if($('#nota-'+proceso_id).attr('disabled')){
+                    $('#nota-'+proceso_id).attr('disabled',false);
+                }else{
+                    $('#nota-'+proceso_id).attr('disabled',true);
+                }               
+
                 console.log($('#span-'+proceso_id))
 
 

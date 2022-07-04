@@ -32,7 +32,8 @@ $(document).ready(function () {
                 } else {
                     $("#alerts").html("");
 
-                    console.log(response);
+                    $("#nota-"+proceso_id).attr('disabled',false);
+                    //console.log(response);
                 }
                 $('#span-'+proceso_id).removeClass('d-none')
                 $('#span-'+proceso_id).addClass('d-block')
