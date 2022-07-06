@@ -1,7 +1,5 @@
 $(document).ready(function () {
 
-    // Asistencia Tradicional
-
     $("form").submit(function (e) {
         e.preventDefault();
         var theForm = $(this);
@@ -35,11 +33,13 @@ $(document).ready(function () {
                                 $("#alerts").append("<div class='alert alert-danger'>" + element[0] + "</div>");
                             }
                         }
-                    } else {    
+                    } else {   
                         if (response.nota_recuperatorio >= 4) {
                             $(".nota-recuperatorio-" + proceso_id).html("<p class='text-success font-weight-bold'>" + response.nota_recuperatorio + "</p>");
-                        } else {
+                        } else if(response.nota_recuperatorio < 4 && response.nota_recuperatorio >= 0) {
                             $(".nota-recuperatorio-" + proceso_id).html("<p class='text-danger font-weight-bold'>" + response.nota_recuperatorio + "</p>");
+                        }else{
+                            $(".nota-recuperatorio-" + proceso_id).html("<p class='text-danger font-weight-bold'>A</p>");
                         }
                     }
                 }
@@ -73,11 +73,15 @@ $(document).ready(function () {
                         }
                     } else {
                         $("#calificacion-procentaje-recuperatorio-"+proceso_id).prop('disabled', false);
-    
+                        
+                   
+
                         if (response.nota >= 4) {
                             $(".nota-" + proceso_id).html("<p class='text-success font-weight-bold'>" + response.nota + "</p>");
-                        } else {
+                        } else if(response.nota < 4 && response.nota >= 0) {
                             $(".nota-" + proceso_id).html("<p class='text-danger font-weight-bold'>" + response.nota + "</p>");
+                        }else{
+                            $(".nota-" + proceso_id).html("<p class='text-danger font-weight-bold'>A</p>");
                         }
                     }
     
