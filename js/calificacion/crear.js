@@ -10,12 +10,22 @@ $(document).ready(function () {
         if(theForm.hasClass('form-recuperatorio')){
             var porcentaje = $('#calificacion-procentaje-recuperatorio-' + proceso_id).val();
             let url = "/procesoCalificacion/recuperatorio";
-            console.log(porcentaje);
             let data = {
                 "porcentaje": porcentaje,
                 "proceso_id": proceso_id,
                 "calificacion_id": calificacion_id
             }
+            console.log(data);
+
+            if(porcentaje == ""){
+                url = "/procesoCalificacion/delete"
+                data = {
+                    "proceso_id": proceso_id,
+                    "calificacion_id": calificacion_id,
+                    "recuperatorio":"Si"
+                }
+            }
+
             $("#spinner-recuperatorio-" + proceso_id).html("<div class='spinner-border text-primary mt-2' role='status' id='spinner-rec-info'><span class='sr-only'>Loading...</span></div>")
 
             $.ajax({
@@ -38,8 +48,10 @@ $(document).ready(function () {
                             $(".nota-recuperatorio-" + proceso_id).html("<p class='text-success font-weight-bold'>" + response.nota_recuperatorio + "</p>");
                         } else if(response.nota_recuperatorio < 4 && response.nota_recuperatorio >= 0) {
                             $(".nota-recuperatorio-" + proceso_id).html("<p class='text-danger font-weight-bold'>" + response.nota_recuperatorio + "</p>");
-                        }else{
+                        }else if (response.nota_recuperatorio == "A" || response.nota_recuperatorio == "a"){
                             $(".nota-recuperatorio-" + proceso_id).html("<p class='text-danger font-weight-bold'>A</p>");
+                        }else{
+                            $(".nota-recuperatorio-" + proceso_id).html("<p class='text-danger font-weight-bold'></p>");
                         }
                     }
                 }
@@ -53,6 +65,14 @@ $(document).ready(function () {
                 "porcentaje": porcentaje,
                 "proceso_id": proceso_id,
                 "calificacion_id": calificacion_id
+            }
+
+            if(porcentaje == ""){
+                url = "/procesoCalificacion/delete"
+                data = {
+                    "proceso_id": proceso_id,
+                    "calificacion_id": calificacion_id,
+                }
             }
     
             $("#spinner-" + proceso_id).html("<div class='spinner-border text-primary mt-2' role='status' id='spinner-info'><span class='sr-only'>Loading...</span></div>")
@@ -80,8 +100,10 @@ $(document).ready(function () {
                             $(".nota-" + proceso_id).html("<p class='text-success font-weight-bold'>" + response.nota + "</p>");
                         } else if(response.nota < 4 && response.nota >= 0) {
                             $(".nota-" + proceso_id).html("<p class='text-danger font-weight-bold'>" + response.nota + "</p>");
-                        }else{
+                        }else if(response.nota == -1){
                             $(".nota-" + proceso_id).html("<p class='text-danger font-weight-bold'>A</p>");
+                        }else{
+                            $(".nota-" + proceso_id).html("<p class='text-danger font-weight-bold'></p>");
                         }
                     }
     
