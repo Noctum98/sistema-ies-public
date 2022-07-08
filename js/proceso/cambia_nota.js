@@ -9,6 +9,12 @@ $(document).ready(function () {
             "proceso_id": proceso_id,
             "nota_final": nota_final,
         };
+        $("#alerts").html("");
+        $('#span-'+proceso_id).removeClass('d-block')
+        $('#span-'+proceso_id).addClass('d-none')
+        $('#spin-'+proceso_id).removeClass('d-none')
+        $('#spin-'+proceso_id).addClass('d-block')
+
 
         $.ajax({
             method: "POST",
@@ -20,7 +26,12 @@ $(document).ready(function () {
                     for (const key in response.errors) {
                         if (Object.hasOwnProperty.call(response.errors, key)) {
                             const element = response.errors[key];
+                            console.log(element);
                             $("#alerts").append("<div class='alert alert-danger'>" + element[0] + "</div>");
+                            $([document.documentElement, document.body]).animate({
+                                scrollTop: $("#container-scroll").offset().top
+                            }, 100);
+            
                         }
                     }
                 } else {
@@ -31,6 +42,10 @@ $(document).ready(function () {
                     }else{
                         $('#nota-'+proceso_id).addClass("text-danger");
                     }
+                    $('#span-'+proceso_id).removeClass('d-none')
+                    $('#span-'+proceso_id).addClass('d-block')
+                    $('#spin-'+proceso_id).removeClass('d-block')
+                    $('#spin-'+proceso_id).addClass('d-none')
 
                 }
             }

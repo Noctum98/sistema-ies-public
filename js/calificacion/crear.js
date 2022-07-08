@@ -16,8 +16,9 @@ $(document).ready(function () {
                 "calificacion_id": calificacion_id
             }
             console.log(data);
-
-            if(porcentaje == ""){
+            console.log(porcentaje);
+            console.log(porcentaje.trim());
+            if(porcentaje.trim() == ""){
                 url = "/procesoCalificacion/delete"
                 data = {
                     "proceso_id": proceso_id,
@@ -67,7 +68,7 @@ $(document).ready(function () {
                 "calificacion_id": calificacion_id
             }
 
-            if(porcentaje == ""){
+            if(porcentaje.trim() == ""){
                 url = "/procesoCalificacion/delete"
                 data = {
                     "proceso_id": proceso_id,
