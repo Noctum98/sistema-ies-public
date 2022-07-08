@@ -1,11 +1,9 @@
 $(document).ready(function () {
-
     $("form").submit(function (e) {
         e.preventDefault();
         var theForm = $(this);
         var proceso_id = theForm.attr("id");
         var calificacion_id = $('#calificacion_id').val();
-
 
         if(theForm.hasClass('form-recuperatorio')){
             var porcentaje = $('#calificacion-procentaje-recuperatorio-' + proceso_id).val();
@@ -36,7 +34,6 @@ $(document).ready(function () {
                 //dataType: "dataType",
                 success: function (response) {
                     $("#spinner-rec-info").remove();
-    
                     if (response.errors) {
                         for (const key in response.errors) {
                             if (Object.hasOwnProperty.call(response.errors, key)) {
@@ -49,7 +46,7 @@ $(document).ready(function () {
                             $(".nota-recuperatorio-" + proceso_id).html("<p class='text-success font-weight-bold'>" + response.nota_recuperatorio + "</p>");
                         } else if(response.nota_recuperatorio < 4 && response.nota_recuperatorio >= 0) {
                             $(".nota-recuperatorio-" + proceso_id).html("<p class='text-danger font-weight-bold'>" + response.nota_recuperatorio + "</p>");
-                        }else if (response.nota_recuperatorio == "A" || response.nota_recuperatorio == "a"){
+                        }else if (response.nota_recuperatorio === "A" || response.nota_recuperatorio === "a"){
                             $(".nota-recuperatorio-" + proceso_id).html("<p class='text-danger font-weight-bold'>A</p>");
                         }else{
                             $(".nota-recuperatorio-" + proceso_id).html("<p class='text-danger font-weight-bold'></p>");
@@ -68,7 +65,11 @@ $(document).ready(function () {
                 "calificacion_id": calificacion_id
             }
 
+<<<<<<< HEAD
             if(porcentaje.trim() == ""){
+=======
+            if(porcentaje === ""){
+>>>>>>> 53c8188b7330a213a046c3dd59ece97a2004b2f0
                 url = "/procesoCalificacion/delete"
                 data = {
                     "proceso_id": proceso_id,
@@ -94,21 +95,18 @@ $(document).ready(function () {
                         }
                     } else {
                         $("#calificacion-procentaje-recuperatorio-"+proceso_id).prop('disabled', false);
-                        
-                   
 
                         if (response.nota >= 4) {
                             $(".nota-" + proceso_id).html("<p class='text-success font-weight-bold'>" + response.nota + "</p>");
                         } else if(response.nota < 4 && response.nota >= 0) {
                             $(".nota-" + proceso_id).html("<p class='text-danger font-weight-bold'>" + response.nota + "</p>");
-                        }else if(response.nota == -1){
+                        }else if(response.nota === -1){
                             $(".nota-" + proceso_id).html("<p class='text-danger font-weight-bold'>A</p>");
                         }else{
                             $(".nota-" + proceso_id).html("<p class='text-danger font-weight-bold'></p>");
                         }
                     }
-    
-    
+
                 }
             });
         }
