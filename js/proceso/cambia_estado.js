@@ -27,6 +27,9 @@ $(document).ready(function () {
                         if (Object.hasOwnProperty.call(response.errors, key)) {
                             const element = response.errors[key];
                             $("#alerts").append("<div class='alert alert-danger'>" + element[0] + "</div>");
+                            $([document.documentElement, document.body]).animate({
+                                scrollTop: $("#container-scroll").offset().top
+                            }, 100)
                         }
                     }
                 } else {
@@ -35,15 +38,14 @@ $(document).ready(function () {
                     $("#nota-"+proceso_id).attr('disabled',false);
                     //console.log(response);
                 }
-                $('#span-'+proceso_id).removeClass('d-none')
-                $('#span-'+proceso_id).addClass('d-block')
-                $('#spin-'+proceso_id).removeClass('d-block')
-                $('#spin-'+proceso_id).addClass('d-none')
-                console.log($('#span-'+proceso_id))
-
-
             }
         });
+
+        $('#span-'+proceso_id).removeClass('d-none')
+        $('#span-'+proceso_id).addClass('d-block')
+        $('#spin-'+proceso_id).removeClass('d-block')
+        $('#spin-'+proceso_id).addClass('d-none')
+        console.log($('#span-'+proceso_id))
         
      });
 });
