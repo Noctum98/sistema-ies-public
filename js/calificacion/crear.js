@@ -65,11 +65,7 @@ $(document).ready(function () {
                 "calificacion_id": calificacion_id
             }
 
-<<<<<<< HEAD
             if(porcentaje.trim() == ""){
-=======
-            if(porcentaje === ""){
->>>>>>> 53c8188b7330a213a046c3dd59ece97a2004b2f0
                 url = "/procesoCalificacion/delete"
                 data = {
                     "proceso_id": proceso_id,
