@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $("#pondera-cargo-materia").submit(function (event) {
+    $(".pondera-cargo").submit(function (event) {
         event.preventDefault();
 
         let id = $(this).attr('id');
