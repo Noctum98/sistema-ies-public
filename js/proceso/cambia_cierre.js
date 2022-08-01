@@ -33,6 +33,23 @@ $(document).ready(function () {
                 } else {
                     $("#alerts").html("");
 
+                    if(response.estado_id == 5){
+                
+                        if($('#global-'+proceso_id).attr('disabled')){
+                            $('#global-'+proceso_id).attr('disabled',false);
+                        }else{
+                            $('#global-'+proceso_id).attr('disabled',true);
+                        }
+
+                        
+                        if($('#btn-global-'+proceso_id).attr('disabled')){
+                            $('#btn-global-'+proceso_id).attr('disabled',false);
+                        }else{
+                            $('#btn-global-'+proceso_id).attr('disabled',true);
+                        }
+
+                        
+                    }
                     console.log(response);
                 }
                 $('#span-'+proceso_id).removeClass('d-none')
@@ -44,8 +61,8 @@ $(document).ready(function () {
                     $('#nota-'+proceso_id).attr('disabled',false);
                 }else{
                     $('#nota-'+proceso_id).attr('disabled',true);
-                }               
-
+                }
+    
                 console.log($('#span-'+proceso_id))
 
 
