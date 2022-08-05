@@ -79,8 +79,8 @@ $(document).ready(function () {
     var modular = function (form) {
         console.log('mod')
         var proceso_id = form.attr("id");
-        var cargo_id = $('input[name=cargo_id]')[0].value;
-        var materia_id = $('input[name=materia_id]')[0].value;
+        var cargo_id = $('.cargo_id')[0].value;
+        var materia_id = $('.materia_id')[0].value;
         var porcentaje = $('#asis-procentaje-' + proceso_id).val();
         let url = "/asistencias/crearAsistenciaModular";
         let data = {
