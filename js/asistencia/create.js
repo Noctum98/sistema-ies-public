@@ -14,6 +14,7 @@ $(document).ready(function () {
             tradicional_7030(theForm);
         }else if(theForm.hasClass('form-modular'))
         {
+            console.log('mod1')
             modular(theForm);
         }
 
@@ -76,14 +77,17 @@ $(document).ready(function () {
     }
 
     var modular = function (form) {
+        console.log('mod')
         var proceso_id = form.attr("id");
         var cargo_id = $('input[name=cargo_id]')[0].value;
+        var materia_id = $('input[name=materia_id]')[0].value;
         var porcentaje = $('#asis-procentaje-' + proceso_id).val();
         let url = "/asistencias/crearAsistenciaModular";
         let data = {
             "porcentaje": porcentaje,
             "proceso_id": proceso_id,
-            'cargo_id': cargo_id
+            'cargo_id': cargo_id,
+            'materia_id': materia_id
         }
 
 
