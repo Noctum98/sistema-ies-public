@@ -32,7 +32,14 @@ $(document).ready(function () {
                         }
                     }
                 }
+                let clasePonderacion = 'text-warning'
+                if(response[1] === 100){
+                    clasePonderacion = 'text-success'
+                }
+
                 $('#cargo-'+cargo+'-materia-'+materia).text(response[1])
+                $('#cargo-u-materia-'+materia).text(response[1])
+                $('#cargo-u-materia-'+materia).removeClass().addClass(clasePonderacion)
                 $('#loader-cargo-'+cargo+'-materia-'+materia).hide();
             },
             done:function (){
