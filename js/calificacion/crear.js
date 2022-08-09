@@ -13,9 +13,7 @@ $(document).ready(function () {
                 "proceso_id": proceso_id,
                 "calificacion_id": calificacion_id
             }
-            console.log(data);
-            console.log(porcentaje);
-            console.log(porcentaje.trim());
+    
             if(porcentaje.trim() == ""){
                 url = "/procesoCalificacion/delete"
                 data = {
@@ -90,13 +88,16 @@ $(document).ready(function () {
                             }
                         }
                     } else {
-                        $("#calificacion-procentaje-recuperatorio-"+proceso_id).prop('disabled', false);
 
                         if (response.nota >= 4) {
                             $(".nota-" + proceso_id).html("<p class='text-success font-weight-bold'>" + response.nota + "</p>");
                         } else if(response.nota < 4 && response.nota >= 0) {
+                            $("#calificacion-procentaje-recuperatorio-"+proceso_id).prop('disabled', false);
+
                             $(".nota-" + proceso_id).html("<p class='text-danger font-weight-bold'>" + response.nota + "</p>");
                         }else if(response.nota === -1){
+                            $("#calificacion-procentaje-recuperatorio-"+proceso_id).prop('disabled', false);
+
                             $(".nota-" + proceso_id).html("<p class='text-danger font-weight-bold'>A</p>");
                         }else{
                             $(".nota-" + proceso_id).html("<p class='text-danger font-weight-bold'></p>");
