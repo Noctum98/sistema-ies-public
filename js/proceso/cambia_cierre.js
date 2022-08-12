@@ -1,20 +1,20 @@
 $(document).ready(function () {
     console.log('ff')
-    $('.check-cierre').on('change', function() {
+    $('.check-cierre').on('change', function () {
         const campo = $(this);
         const proceso_id = campo.attr('id');
         const cierre = $(this).prop('checked');
         console.log(cierre)
- $('#span-'+proceso_id).removeClass('d-block')
- $('#span-'+proceso_id).addClass('d-none')
-        $('#spin-'+proceso_id).removeClass('d-none')
-        $('#spin-'+proceso_id).addClass('d-block')
+        $('#span-' + proceso_id).removeClass('d-block')
+        $('#span-' + proceso_id).addClass('d-none')
+        $('#spin-' + proceso_id).removeClass('d-none')
+        $('#spin-' + proceso_id).addClass('d-block')
 
         let url = '/proceso/cambia/cierre';
         let data = {
-             "proceso_id":proceso_id,
-             "cierre":cierre
-         };
+            "proceso_id": proceso_id,
+            "cierre": cierre
+        };
         //
         //
         $.ajax({
@@ -33,41 +33,44 @@ $(document).ready(function () {
                 } else {
                     $("#alerts").html("");
 
-                    if(response.estado_id == 5){
-                
-                        if($('#global-'+proceso_id).attr('disabled')){
-                            $('#global-'+proceso_id).attr('disabled',false);
-                        }else{
-                            $('#global-'+proceso_id).attr('disabled',true);
-                        }
-
-                        
-                        if($('#btn-global-'+proceso_id).attr('disabled')){
-                            $('#btn-global-'+proceso_id).attr('disabled',false);
-                        }else{
-                            $('#btn-global-'+proceso_id).attr('disabled',true);
-                        }
-
-                        
+                    if (response.cierre) {
+                        $('#' + proceso_id).attr('disabled', true);
+                    } else {
+                        $('#' + proceso_id).attr('disabled', false);
                     }
-                    console.log(response);
-                }
-                $('#span-'+proceso_id).removeClass('d-none')
-                $('#span-'+proceso_id).addClass('d-block')
-                $('#spin-'+proceso_id).removeClass('d-block')
-                $('#spin-'+proceso_id).addClass('d-none')
 
-                if($('#nota-'+proceso_id).attr('disabled')){
-                    $('#nota-'+proceso_id).attr('disabled',false);
-                }else{
-                    $('#nota-'+proceso_id).attr('disabled',true);
+                    if (response.estado_id == 5) {
+
+                        if ($('#global-' + proceso_id).attr('disabled')) {
+                            $('#global-' + proceso_id).attr('disabled', false);
+                        } else {
+                            $('#global-' + proceso_id).attr('disabled', true);
+                        }
+
+
+                        if ($('#btn-global-' + proceso_id).attr('disabled')) {
+                            $('#btn-global-' + proceso_id).attr('disabled', false);
+                        } else {
+                            $('#btn-global-' + proceso_id).attr('disabled', true);
+                        }
+                    }
                 }
-    
-                console.log($('#span-'+proceso_id))
+                $('#span-' + proceso_id).removeClass('d-none')
+                $('#span-' + proceso_id).addClass('d-block')
+                $('#spin-' + proceso_id).removeClass('d-block')
+                $('#spin-' + proceso_id).addClass('d-none')
+
+                if ($('#nota-' + proceso_id).attr('disabled')) {
+                    $('#nota-' + proceso_id).attr('disabled', false);
+                } else {
+                    $('#nota-' + proceso_id).attr('disabled', true);
+                }
+
+                console.log($('#span-' + proceso_id))
 
 
             }
         });
-        
-     });
+
+    });
 });

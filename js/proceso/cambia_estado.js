@@ -35,8 +35,7 @@ $(document).ready(function () {
                 } else {
                     $("#alerts").html("");
 
-                    $("#nota-" + proceso_id).attr('disabled', false);
-                    //console.log(response);
+                    // $("#nota-" + proceso_id).attr('disabled', false);
                 }
 
                 if (response.estado && response.estado.identificador == 5) {
